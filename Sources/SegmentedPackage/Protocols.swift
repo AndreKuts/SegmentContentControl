@@ -19,7 +19,11 @@ public protocol ViewContentProvider {
 public protocol SegmentMoveDeciderProtocol {
 
 	/// Decide which animation will be used for the selected segment item.
-	func makeMove(to item: any SegmentItemProtocol, trailingAnimation: AnyTransition, leadingAnimation: AnyTransition) -> AnyTransition
+	func makeMove(
+		to item: any SegmentItemProtocol,
+		trailingAnimation: AnyTransition,
+		leadingAnimation: AnyTransition
+	) -> AnyTransition
 }
 
 public protocol SegmentItemProtocol: Hashable, ViewContentProvider, SegmentMoveDeciderProtocol {
@@ -30,4 +34,15 @@ public protocol SegmentItemProtocol: Hashable, ViewContentProvider, SegmentMoveD
 	/// String value for displaying in segment control
 	var name: String { get }
 
+}
+
+public extension SegmentItemProtocol {
+
+	func makeMove(
+		to item: any SegmentItemProtocol,
+		trailingAnimation: AnyTransition,
+		leadingAnimation: AnyTransition
+	) -> AnyTransition {
+		item.index > self.index ? leadingAnimation : trailingAnimation
+	}
 }
