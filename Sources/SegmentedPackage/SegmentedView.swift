@@ -10,7 +10,7 @@ import SwiftUI
 public struct SegmentedView<Item: SegmentItemProtocol>: View {
 
 	@ObservedObject
-	var contextProvider: SegmentContext<Item>
+	public var contextProvider: SegmentContext<Item>
 
 	public var body: some View {
 		VStack(spacing: 10) {
