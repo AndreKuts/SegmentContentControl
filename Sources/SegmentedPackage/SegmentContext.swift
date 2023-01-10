@@ -9,8 +9,8 @@ import SwiftUI
 
 public final class SegmentContext<Item: SegmentItemProtocol>: ObservableObject {
 
-	let total: [Item]
-	let title: String
+	public let total: [Item]
+	public let title: String
 
 	@Published var triggered: Item
 	@Published var selected: Item {
@@ -39,8 +39,8 @@ public final class SegmentContext<Item: SegmentItemProtocol>: ObservableObject {
 
 	private let leading: AnyTransition
 	private let trailing: AnyTransition
-	private (set) var insertion: AnyTransition
-	private (set) var removal: AnyTransition
+	public private (set) var insertion: AnyTransition
+	public private (set) var removal: AnyTransition
 
 	public init(
 		first: Item,
