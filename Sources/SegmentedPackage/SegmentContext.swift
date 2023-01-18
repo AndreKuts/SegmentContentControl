@@ -12,8 +12,8 @@ public final class SegmentContext<Item: SegmentItemProtocol>: ObservableObject {
 	public let total: [Item]
 	public let title: String
 
-	@Published var triggered: Item
-	@Published var selected: Item {
+	@Published public var triggered: Item
+	@Published public var selected: Item {
 		didSet {
 
 			if oldValue != selected {
